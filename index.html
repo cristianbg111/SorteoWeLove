@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo We love The Remember 80-90-2000 - Sala Zahora Magestic</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neonPink: '#ff007f',
+                        neonCyan: '#00f0ff',
+                        neonYellow: '#f3e600',
+                        darkBg: '#0b0914',
+                        darkCard: '#151128',
+                        terminalBg: '#0f172a'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Courier New', 'Courier', 'monospace']
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 20px rgba(255, 0, 127, 0.6), inset 0 0 10px rgba(255, 0, 127, 0.4)',
+                        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.6), inset 0 0 10px rgba(0, 240, 255, 0.4)',
+                        'neon-yellow': '0 0 20px rgba(243, 230, 0, 0.6)',
+                        'terminal': '0 0 30px rgba(0, 255, 100, 0.2)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;600;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        .font-retro { font-family: 'Audiowide', cursive; }
+        .font-marker { font-family: 'Permanent+Marker', cursive; }
+        
+        .glow-text-pink {
+            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
+        }
+        .glow-text-cyan {
+            text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+        }
+        .glow-text-yellow {
+            text-shadow: 0 0 10px #f3e600, 0 0 20px #f3e600;
+        }
+
+        /* Animated Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 0, 127, 0.05) 1px, transparent 1px);
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; filter: drop-shadow(0 0 25px rgba(255,0,127,0.8)); }
+        }
+        .animate-glow {
+            animation: pulseGlow 3s infinite;
+        }
+
+        /* Custom Blink Animation */
+        @keyframes blinkEffect {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .animate-blink {
+            animation: blinkEffect 1.2s infinite ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0914;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff007f;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-white font-sans min-h-screen bg-grid overflow-x-hidden selection:bg-neonPink selection:text-white">
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkBg/80 border-b border-neonPink/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-neonPink to-neonCyan flex items-center justify-center shadow-neon-pink">
+                    <i class="fa-solid fa-compact-disc text-white text-xl animate-spin" style="animation-duration: 8s;"></i>
+                </div>
+                <span class="font-retro text-xs sm:text-base tracking-wider bg-gradient-to-r from-neonCyan via-neonPink to-neonYellow bg-clip-text text-transparent">
+                    SALA ZAHORA MAGESTIC
+                </span>
+            </div>
+            <nav class="hidden md:flex space-x-8 font-semibold text-sm tracking-widest">
+                <a href="#evento" class="hover:text-neonCyan transition-colors">EL EVENTO</a>
+                <a href="#terminal-sorteo" class="hover:text-neonPink transition-colors">RETO LINUX</a>
+                <a href="#bases-concurso" class="text-neonYellow hover:text-white transition-colors animate-blink font-bold">Bases del Concurso</a>
+            </nav>
+            <div>
+                <a href="#terminal-sorteo" class="px-5 py-2.5 rounded-full font-retro text-xs bg-neonPink hover:bg-neonPink/80 text-white shadow-neon-pink transition transform hover:scale-105">
+                    ¡JUGAR SORTEO!
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-16 pb-24 px-4 overflow-hidden">
+        <!-- Neon Glow Background Blobs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neonPink/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/4 w-72 h-72 bg-neonCyan/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-neonCyan/50 bg-neonCyan/10 text-neonCyan text-xs sm:text-sm font-retro tracking-widest animate-pulse">
+                🎧 80s &bull; 90s &bull; 2000s &bull; 2 ENTRADAS DOBLES 🎧
+            </div>
+            <h1 class="font-retro text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 uppercase">
+                <span class="block text-white">We Love</span>
+                <span class="block glow-text-pink text-neonPink mt-2">The Remember 80-90-2000</span>
+            </h1>
+            <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
+                Demuestra que eres un experto musical introduciendo el comando correcto en nuestra <span class="text-neonCyan font-semibold">Terminal Linux</span> para ganar 2 entradas en la <span class="text-neonYellow font-semibold">Sala Zahora Magestic</span>.
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-3 max-w-md mx-auto mb-12 bg-darkCard/80 border border-neonPink/30 p-4 rounded-2xl shadow-lg">
+                <div class="text-center">
+                    <span id="days" class="font-retro text-2xl sm:text-3xl text-neonCyan block">00</span>
+                    <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">DÍAS</span>
+                </div>
+                <div class="text-center border-l border-white/10">
+                    <span id="hours" class="font-retro text-2xl sm:text-3xl text-neonPink block">00</span>
+                    <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">HORAS</span>
+                </div>
+                <div class="text-center border-l border-white/10">
+                    <span id="minutes" class="font-retro text-2xl sm:text-3xl text-neonYellow block">00</span>
+                    <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">MINS</span>
+                </div>
+                <div class="text-center border-l border-white/10">
+                    <span id="seconds" class="font-retro text-2xl sm:text-3xl text-neonCyan block">00</span>
+                    <span class="text-[10px] sm:text-xs text-gray-400 tracking-wider">SECS</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#terminal-sorteo" class="w-full sm:w-auto px-8 py-4 rounded-xl font-retro text-sm bg-gradient-to-r from-neonPink to-purple-600 hover:from-neonPink/90 hover:to-purple-700 text-white shadow-neon-pink transition transform hover:-translate-y-1">
+                    <i class="fa-solid fa-terminal mr-2"></i> IR A LA TERMINAL LINUX
+                </a>
+                <a href="#evento" class="w-full sm:w-auto px-8 py-4 rounded-xl font-retro text-sm bg-darkCard border border-neonCyan/50 hover:bg-neonCyan/10 text-neonCyan shadow-neon-cyan transition transform hover:-translate-y-1">
+                    <i class="fa-solid fa-circle-info mr-2"></i> VER DETALLES
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="evento" class="py-20 px-4 bg-darkCard/40 border-y border-white/5 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-retro text-3xl sm:text-4xl text-white mb-3">DETALLES DEL <span class="glow-text-cyan text-neonCyan">EVENTO</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-neonCyan to-neonPink mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-darkCard border border-neonPink/30 rounded-2xl p-8 text-center hover:border-neonPink transition shadow-lg group">
+                    <div class="w-16 h-16 rounded-2xl bg-neonPink/10 text-neonPink flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-neon-pink">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <h3 class="font-retro text-xl text-white mb-2">SÁBADO 24 DE OCTUBRE</h3>
+                    <p class="text-gray-300 font-medium">Gran Noche Remember</p>
+                    <p class="text-neonYellow text-sm font-semibold mt-1">Apertura a las 18:00 horas</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-darkCard border border-neonCyan/30 rounded-2xl p-8 text-center hover:border-neonCyan transition shadow-lg group">
+                    <div class="w-16 h-16 rounded-2xl bg-neonCyan/10 text-neonCyan flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-neon-cyan">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-retro text-xl text-white mb-2">SALA ZAHORA MAGESTIC</h3>
+                    <p class="text-gray-300 font-medium">Ciudad Real</p>
+                    <p class="text-neonCyan text-sm font-semibold mt-1">El templo de los 80, 90 y 2000</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-darkCard border border-neonYellow/30 rounded-2xl p-8 text-center hover:border-neonYellow transition shadow-lg group">
+                    <div class="w-16 h-16 rounded-2xl bg-neonYellow/10 text-neonYellow flex items-center justify-center mx-auto mb-6 text-2xl group-hover:scale-110 transition duration-300 shadow-neon-yellow">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <h3 class="font-retro text-xl text-white mb-2">MÚSICA TOTAL</h3>
+                    <p class="text-gray-300 font-medium">Éxitos inolvidables</p>
+                    <p class="text-neonPink text-sm font-semibold mt-1">DJs & Ambiente Espectacular</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="terminal-sorteo" class="py-24 px-4 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-block mb-3 px-4 py-1 rounded-full border border-neonPink/50 bg-neonPink/10 text-neonPink text-xs font-retro tracking-widest">
+                    💻 RETO LINUX DE LOS 90s 💻
+                </div>
+                <h2 class="font-retro text-3xl sm:text-4xl text-white mb-3">TERMINAL DE <span class="glow-text-pink text-neonPink">SORTEO</span></h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm">
+                    Introduce el nombre del grupo de los 90s en la terminal para ganar <strong class="text-white">2 entradas</strong>. Dispones de un máximo de <span class="text-neonYellow font-bold">3 intentos</span> en esta sesión.
+                </p>
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="bg-slate-950 rounded-2xl border-2 border-green-500/50 shadow-terminal overflow-hidden">
+                <!-- Terminal Top Bar -->
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500 inline-block"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500 inline-block"></div>
+                        <span class="text-xs font-mono text-gray-400 ml-2">bash - zahora@remember-server:~</span>
+                    </div>
+                    <div class="flex items-center space-x-3 font-mono text-xs">
+                        <span id="attempts-badge" class="text-neonYellow bg-neonYellow/10 px-2 py-0.5 rounded border border-neonYellow/30">Intentos: 3/3</span>
+                        <span class="text-green-400"><i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> ONLINE</span>
+                    </div>
+                </div>
+
+                <!-- Terminal Body -->
+                <div id="terminal-body" class="p-6 font-mono text-xs sm:text-sm text-green-400 h-96 overflow-y-auto space-y-3 cursor-text" onclick="document.getElementById('terminal-input').focus()">
+                    <div class="text-gray-400">
+                        Zahora Magestic Linux v9.0 (tty1)<br>
+                        Escribe el nombre del grupo de los 90s requerido para completar el sorteo o <span class="text-neonYellow">help</span> para ayuda.<br>
+                        ------------------------------------------------------------------
+                    </div>
+                    <div id="terminal-history"></div>
+                    <div id="terminal-input-container" class="flex items-center space-x-2 pt-1">
+                        <span class="text-neonPink font-bold">zahora@remember:~$</span>
+                        <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false"
+                            class="bg-transparent border-none outline-none text-green-300 font-mono w-full focus:ring-0 p-0"
+                            onkeydown="handleTerminalKey(event)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hint box -->
+            <div class="mt-6 bg-darkCard border border-neonCyan/30 p-4 rounded-xl text-xs text-gray-300 flex items-start space-x-3">
+                <i class="fa-solid fa-lightbulb text-neonYellow text-base mt-0.5"></i>
+                <div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ganador-section" class="py-16 px-4 bg-darkCard/30 border-t border-white/10 hidden">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="bg-darkCard border-2 border-neonPink rounded-3xl p-8 shadow-neon-pink">
+                <div class="w-16 h-16 rounded-full bg-neonPink text-white flex items-center justify-center mx-auto mb-4 text-3xl shadow-neon-pink animate-bounce">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h3 id="winner-title" class="font-retro text-2xl sm:text-3xl text-neonYellow mb-3">¡Enhorabuena, eres el ganador!</h3>
+                <p class="text-gray-300 text-sm mb-6">
+                    Has acertado el comando en la terminal de Linux y has ganado tus 2 entradas para <strong class="text-white">We love The Remember 80-90-2000</strong> en la Sala Zahora Magestic (Sábado 24 de Octubre a las 18:00h).
+                </p>
+                <div class="bg-darkBg border border-neonCyan p-4 rounded-2xl mb-6">
+                    <span class="text-xs text-gray-400 block mb-1">CÓDIGO DE VALIDACIÓN OFICIAL:</span>
+                    <span id="secret-code-display" class="font-retro text-2xl sm:text-3xl text-neonCyan tracking-widest">789456123</span>
+                </div>
+                <p class="text-xs text-gray-300 font-semibold mb-6">
+                    📸 IMPORTANTE: Haz una captura de pantalla de este código y envíala lo antes posible. ¡El ganador será la primera persona en enviarlo (demostrable por día y hora de recepción)!
+                </p>
+                <!-- Botón directo para enviar el correo con la captura -->
+                <a href="mailto:cristianbernaldj@gmail.com?subject=GANADOR%20SORTEO%20WE%20LOVE%20THE%20REMEMBER&body=Hola%20Cristian,%20he%20acertado%20el%20reto%20en%20la%20web.%20Adjunto%20la%20captura%20con%20el%20código%20de%20validación." 
+                   class="inline-block px-8 py-4 rounded-xl font-retro text-sm bg-gradient-to-r from-neonCyan to-neonPink hover:opacity-90 text-white shadow-neon-cyan transition transform hover:scale-105">
+                    <i class="fa-solid fa-envelope mr-2"></i> ENVIAR CAPTURA POR CORREO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BASES DEL CONCURSO -->
+    <section id="bases-concurso" class="py-20 px-4 bg-darkCard/60 border-t border-neonPink/20 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="inline-block mb-3 px-4 py-1 rounded-full border border-neonYellow/50 bg-neonYellow/10 text-neonYellow text-xs font-retro tracking-widest animate-blink">
+                    📜 NORMATIVA OFICIAL 📜
+                </div>
+                <h2 class="font-retro text-3xl sm:text-4xl text-white mb-3 animate-blink">Bases del <span class="glow-text-yellow text-neonYellow">Concurso</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-neonYellow to-neonPink mx-auto rounded-full"></div>
+            </div>
+
+            <div class="bg-darkCard border border-neonCyan/30 rounded-2xl p-6 sm:p-8 space-y-6 text-sm text-gray-300 shadow-xl">
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 rounded-full bg-neonCyan/10 text-neonCyan flex items-center justify-center shrink-0 font-retro mt-1">1</div>
+                    <div>
+                        <strong class="text-white block mb-1">Dinámica del Reto:</strong>
+                        Para participar en el sorteo de las 2 entradas dobles, los usuarios deben superar el reto interactivo de la terminal de Linux introduciendo el nombre correcto del grupo musical de los 90s propuesto.
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 rounded-full bg-neonPink/10 text-neonPink flex items-center justify-center shrink-0 font-retro mt-1">2</div>
+                    <div>
+                        <strong class="text-white block mb-1">Obtención del Código:</strong>
+                        Quien consiga acertar el grupo de los 90s desbloqueará de forma automática en pantalla un <strong class="text-neonCyan">código de validación oficial</strong> único.
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 rounded-full bg-neonYellow/10 text-neonYellow flex items-center justify-center shrink-0 font-retro mt-1">3</div>
+                    <div>
+                        <strong class="text-white block mb-1">Condición de Ganador/a (Rapidez):</strong>
+                        El ganador o ganadora del premio será estrictamente <strong class="text-white">la primera persona que envíe el código correcto al correo electrónico</strong> <a href="mailto:cristianbernaldj@gmail.com" class="text-neonYellow underline font-semibold">cristianbernaldj@gmail.com</a>. Esto se verificará y demostrará de forma transparente mediante el <strong class="text-neonCyan">día y la hora exacta de recepción</strong> del correo electrónico.
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 font-retro mt-1">4</div>
+                    <div>
+                        <strong class="text-white block mb-1">Instrucciones de Envío:</strong>
+                        Es obligatorio adjuntar una <strong class="text-white">captura de pantalla</strong> clara del código obtenido en la web dentro del correo para validar la jugada.
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 rounded-full bg-green-500/10 text-green-400 flex items-center justify-center shrink-0 font-retro mt-1">5</div>
+                    <div>
+                        <strong class="text-white block mb-1">Límite de Intentos:</strong>
+                        Cada sesión de usuario dispone de un máximo de 3 intentos en la terminal para acertar el nombre del grupo. Si se agotan los intentos, se deberá recargar la página web para volver a intentarlo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/10 bg-darkCard/80 text-center text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <div class="font-retro text-sm text-white tracking-widest">
+                WE LOVE THE REMEMBER 80-90-2000 &bull; SALA ZAHORA MAGESTIC
+            </div>
+            <p>© 2026 Todos los derechos reservados. Sábado 24 de Octubre a las 18:00h.</p>
+            <div class="flex justify-center space-x-6 text-lg pt-2">
+                <a href="#" class="text-gray-400 hover:text-neonPink transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-neonCyan transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-neonYellow transition"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Forzar ir arriba al cargar la página y limpiar el hash si lo hubiera
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            if (window.location.hash) {
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+        });
+
+        // Countdown Timer Setup (Target: Oct 24, 18:00)
+        const targetDate = new Date('October 24, 2026 18:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Linux Terminal State & Attempts logic
+        let attemptsLeft = 3;
+        let gameLocked = false;
+
+        function handleTerminalKey(event) {
+            if (gameLocked) return;
+
+            if (event.key === 'Enter') {
+                const inputEl = document.getElementById('terminal-input');
+                const cmd = inputEl.value.trim();
+                const historyEl = document.getElementById('terminal-history');
+
+                if (!cmd) return;
+
+                // Append user command to history
+                const cmdLine = document.createElement('div');
+                cmdLine.innerHTML = `<span class="text-neonPink font-bold">zahora@remember:~$</span> <span class="text-white">${escapeHtml(cmd)}</span>`;
+                historyEl.appendChild(cmdLine);
+
+                // Process command
+                const responseDiv = document.createElement('div');
+                const normalizedCmd = cmd.toLowerCase().replace(/\s+/g, ' ');
+                
+                const targetCode = atob("MiBicm90aGVycyBvbiB0aGUgNHRoIGZsb29y"); 
+                const userCode = normalizedCmd;
+
+                if (normalizedCmd === 'help') {
+                    responseDiv.className = 'text-green-300';
+                    responseDiv.innerHTML = `Comandos disponibles:<br>` +
+                        `- <span class="text-neonYellow">date</span>: Muestra la fecha y hora del evento.<br>` +
+                        `- <span class="text-neonYellow">venue</span>: Muestra información de la sala.<br>` +
+                        `- <span class="text-neonYellow">clear</span>: Limpia la pantalla de la terminal.<br>` +
+                        `- [Grupo 90s]: Introduce el nombre del grupo para ganar las 2 entradas.`;
+                    historyEl.appendChild(responseDiv);
+                } else if (normalizedCmd === 'date') {
+                    responseDiv.className = 'text-green-300';
+                    responseDiv.innerHTML = `Sábado 24 de Octubre de 2026 a las 18:00h - ¡Gran fiesta Remember!`;
+                    historyEl.appendChild(responseDiv);
+                } else if (normalizedCmd === 'venue') {
+                    responseDiv.className = 'text-green-300';
+                    responseDiv.innerHTML = `Sala Zahora Magestic (Ciudad Real).`;
+                    historyEl.appendChild(responseDiv);
+                } else if (normalizedCmd === 'clear') {
+                    historyEl.innerHTML = '';
+                    inputEl.value = '';
+                    return;
+                } else if (userCode === targetCode || normalizedCmd === '2brothers') {
+                    // Correct answer
+                    gameLocked = true;
+                    responseDiv.className = 'text-neonYellow font-bold text-base';
+                    responseDiv.innerHTML = `🎉 ¡GRUPO CORRECTO IDENTIFICADO! 🎉<br>` +
+                        `<span class="text-neonPink text-lg">Eres el ganador</span> de las 2 entradas dobles.<br>` +
+                        `Código de validación oficial: <strong class="text-neonCyan text-base">789456123</strong><br>` +
+                        `<span class="text-white text-xs">¡Haz clic en el botón de abajo para enviar tu captura!</span>`;
+                    historyEl.appendChild(responseDiv);
+
+                    // Disable input
+                    inputEl.disabled = true;
+                    document.getElementById('terminal-input-container').style.display = 'none';
+
+                    // Reveal Winner Box
+                    const ganadorSection = document.getElementById('ganador-section');
+                    ganadorSection.classList.remove('hidden');
+                    ganadorSection.scrollIntoView({ behavior: 'smooth' });
+
+                    // Trigger Confetti
+                    triggerConfetti();
+                } else {
+                    // Incorrect answer
+                    attemptsLeft--;
+                    document.getElementById('attempts-badge').innerText = `Intentos: ${attemptsLeft}/3`;
+
+                    if (attemptsLeft > 0) {
+                        responseDiv.className = 'text-red-400 font-semibold';
+                        responseDiv.innerHTML = `Lo sentimos! No es correcto. Prueba de nuevo!! (Te quedan ${attemptsLeft} intentos)`;
+                        historyEl.appendChild(responseDiv);
+                    } else {
+                        gameLocked = true;
+                        responseDiv.className = 'text-red-500 font-bold';
+                        responseDiv.innerHTML = `Lo sentimos! No es correcto. Prueba de nuevo!!<br>` +
+                            `<span class="text-neonYellow">Has agotado los 3 intentos permitidos por sesión. Por favor, visita/recarga de nuevo la página web para volver a intentarlo.</span>`;
+                        historyEl.appendChild(responseDiv);
+
+                        // Disable terminal input
+                        inputEl.disabled = true;
+                        document.getElementById('terminal-input-container').style.display = 'none';
+                    }
+                }
+
+                inputEl.value = '';
+                const terminalBody = document.getElementById('terminal-body');
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function triggerConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#ff007f', '#00f0ff', '#f3e600', '#ffffff']
+            });
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    angle: 60,
+                    spread: 80,
+                    origin: { x: 0, y: 0.7 },
+                    colors: ['#ff007f', '#00f0ff']
+                });
+            }, 300);
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    angle: 120,
+                    spread: 80,
+                    origin: { x: 1, y: 0.7 },
+                    colors: ['#f3e600', '#ffffff']
+                });
+            }, 600);
+        }
+    </script>
+</body>
+</html>
